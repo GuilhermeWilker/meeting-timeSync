@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Cooper Hewitt;
+    font-weight: 300;
+}
+
+.minutes-per-call {
+    font-weight: 600;
+    padding-block: 25px;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.container {
+    margin: 43px 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.organizador__actions {
+    padding: 30px 25px;
+    width: 557px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 11px;
+    background: #fff;
+}
+
+.organizador__actions-header {
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.organizador__actions-header input {
+    padding: 5px 15px;
+}
+
+.organizador__actions-header h1 {
+    font-family: Cooper Hewitt;
+    font-size: 30px;
+    font-weight: 713;
+    line-height: normal;
+}
+
+.organizador__actions-header p {
+    color: #b7b7b7;
+    font-family: Cooper Hewitt;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.organizador__actions-bio {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.organizador__actions-bio p {
+    padding-bottom: 30px;
+}
+
+.organizador__actions-plataformas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.organizador__actions-plataformas small {
+    color: #b7b7b7;
+    font-family: Cooper Hewitt;
+    font-size: 14px;
+}
+
+.organizador__actions-plataformas .plataformas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    padding-top: 15px;
+    justify-content: space-between; /* Adicionamos para distribuir igualmente */
+}
+
+.organizador__actions-plataformas .plataforma {
+    width: 245px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    cursor: pointer;
+}
+
+.organizador__actions-plataformas .plataforma:nth-child(2n) {
+    gap: 0px;
+    cursor: pointer;
+}
+
+.organizador__actions-plataformas .plataforma .img img {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.organizador__actions-plataformas .plataforma:nth-child(2n) .img img {
+    max-width: 70px;
+    max-height: 70px;
+}
