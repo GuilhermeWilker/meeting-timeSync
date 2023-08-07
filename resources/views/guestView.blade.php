@@ -66,7 +66,7 @@
         </article>
 
         <section class="calendario">
-            <h3>Calendário</h3>
+            <livewire:calendar />
         </section>
     </main>
 </body>
