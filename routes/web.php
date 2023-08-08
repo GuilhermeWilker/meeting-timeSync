@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Guest;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Guest::class, 'index']);
+Route::get('/', [GuestController::class, 'index']);
+
+Route::get('/dashboard', [OrganizerController::class, 'index']);
