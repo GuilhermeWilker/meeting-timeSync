@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/font.css">
     <style>
         .organizador__actions-dashboard {
             width: 1326px;
@@ -39,6 +39,12 @@
 
         .calendar-dashboard p {
             margin-inline-end: auto;
+        }
+
+        .calendar-dashboard td.unavailable {
+            background-color: #D1D1D1;
+            color: #fff;
+            cursor: not-allowed;
         }
 
         .bio-textarea {
@@ -152,6 +158,8 @@
         </article>
 
     </main>
+    @livewireScripts
+
 </body>
 
 </html>

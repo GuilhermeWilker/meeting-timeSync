@@ -9,6 +9,7 @@ class Calendar extends Component
     public $year;
     public $month;
     public $weeks = [];
+    public $unavailableDates = []; // array de datas selecionadas como indisponíveis.
 
     public function mount()
     {
@@ -46,6 +47,13 @@ class Calendar extends Component
         while (count($this->weeks[$currentWeek]) < 7) {
             $this->weeks[$currentWeek][] = null;
         }
+    }
+
+    public function markDateUnavailable($date)
+    {
+        in_array($date, $this->unavailableDates)
+            ? $this->unavailableDates = array_diff($this->unavailableDates, [$date])
+            : $this->unavailableDates[] = $date;
     }
 
     public function render()

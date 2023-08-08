@@ -25,10 +25,17 @@
                             @php
                                 // Verificar se é dia de outro mês
                                 $otherMonth = $day['date'] !== date('Y-m-d', strtotime($year . '-' . $month . '-01'));
+                                
+                                // Verificar se a data está selecionada
+                                $isUnavailable = in_array($day['date'], $unavailableDates);
                             @endphp
-                            <td class="{{ $otherMonth ? 'month-day' : '' }}">{{ $day['day'] }}</td>
+
+                            <td wire:click="markDateUnavailable('{{ $day['date'] }}')"
+                                class="{{ $isUnavailable ? 'unavailable' : 'available' }}">
+                                {{ $day['day'] }}
+                            </td>
                         @else
-                            <td></td>
+                            <td></td> // Célula vazia paras datas dos meses anteriores e/ou seguintes.
                         @endif
                     @endforeach
                 </tr>
@@ -62,6 +69,17 @@
 
         opacity: 0.25;
         transition: .3s;
+    }
+
+    .available {
+        opacity: 1;
+    }
+
+
+    .unavailable {
+        background-color: #958d99;
+        color: #000;
+        cursor: not-allowed;
     }
 
     td:hover {

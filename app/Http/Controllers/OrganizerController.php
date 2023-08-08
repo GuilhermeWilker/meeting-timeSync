@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Calendar;
 use Illuminate\Http\Request;
 
 class OrganizerController extends Controller
@@ -11,7 +12,9 @@ class OrganizerController extends Controller
      */
     public function index()
     {
-        return view('organizerView');
+        $calendarComponent = app(Calendar::class);
+
+        return view('organizerView', compact('calendarComponent'));
     }
 
     /**
