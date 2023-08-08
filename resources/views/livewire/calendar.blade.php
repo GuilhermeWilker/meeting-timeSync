@@ -35,7 +35,8 @@
                                 {{ $day['day'] }}
                             </td>
                         @else
-                            <td></td> // Célula vazia paras datas dos meses anteriores e/ou seguintes.
+                            <!-- Célula vazia para os dias dos meses anteriores e/ou seguintes. -->
+                            <td></td>
                         @endif
                     @endforeach
                 </tr>

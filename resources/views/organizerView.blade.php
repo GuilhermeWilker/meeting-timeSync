@@ -116,9 +116,9 @@
                 </div>
 
                 <div>
-                    <input type="text" placeholder="meet.io/seu-nome-ou-empresa" />
-                    <button>Copiar</button>
+                    <livewire:link-generator />
                 </div>
+
             </header>
 
             <div class="actions-dashboard">
