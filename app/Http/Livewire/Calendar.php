@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\UnavailableDate;
 use Livewire\Component;
 
 class Calendar extends Component
@@ -9,7 +10,6 @@ class Calendar extends Component
     public $year;
     public $month;
     public $weeks = [];
-    public $unavailableDates = []; // array de datas selecionadas como indisponíveis.
 
     public function mount()
     {
@@ -34,10 +34,17 @@ class Calendar extends Component
         }
 
         for ($day = 1; $day <= $daysInMonth; ++$day) {
+            $date = $this->year.'-'.$this->month.'-'.str_pad($day, 2, '0', STR_PAD_LEFT);
+            $isUnavailable = UnavailableDate::where('date', $date)->exists();
+            $isAvailable = !$isUnavailable;
+
             $this->weeks[$currentWeek][] = [
                 'day' => $day,
-                'date' => $this->year.'-'.$this->month.'-'.str_pad($day, 2, '0', STR_PAD_LEFT),
+                'date' => $date,
+                'isUnavailable' => $isUnavailable,
+                'isAvailable' => $isAvailable,
             ];
+
             if (count($this->weeks[$currentWeek]) === 7) {
                 ++$currentWeek;
             }
@@ -51,13 +58,21 @@ class Calendar extends Component
 
     public function markDateUnavailable($date)
     {
-        in_array($date, $this->unavailableDates)
-            ? $this->unavailableDates = array_diff($this->unavailableDates, [$date])
-            : $this->unavailableDates[] = $date;
+        $dateEntry = UnavailableDate::where('date', $date)->first();
+
+        if ($dateEntry) {
+            $dateEntry->delete();
+        } else {
+            UnavailableDate::create(['date' => $date]);
+        }
+
+        $this->generateCalendar();
     }
 
     public function render()
     {
-        return view('livewire.calendar');
+        return view('livewire.calendar', [
+            'unavailableDates' => UnavailableDate::pluck('date')->toArray(),
+        ]);
     }
 }

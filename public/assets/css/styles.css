@@ -124,3 +124,9 @@ body {
     max-width: 70px;
     max-height: 70px;
 }
+
+.calendar-dashboard td.unavailable {
+    background-color: #d1d1d1;
+    color: #000000 !important;
+    cursor: not-allowed;
+}

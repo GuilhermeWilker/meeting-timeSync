@@ -1,10 +1,7 @@
 <div>
     <header>
-        <h2>
-            {{ date('F Y', strtotime($year . '-' . $month . '-01')) }}
-        </h2>
+        <h2>{{ date('F Y', strtotime($year . '-' . $month . '-01')) }}</h2>
     </header>
-
     <table>
         <thead>
             <tr>
@@ -20,18 +17,15 @@
         <tbody>
             @foreach ($weeks as $week)
                 <tr>
-                    @foreach ($week as $day)
+                    @foreach ($week as $index => $day)
                         @if ($day)
                             @php
-                                // Verificar se é dia de outro mês
-                                $otherMonth = $day['date'] !== date('Y-m-d', strtotime($year . '-' . $month . '-01'));
-                                
-                                // Verificar se a data está selecionada
-                                $isUnavailable = in_array($day['date'], $unavailableDates);
+                                $date = $day['date'];
+                                $cellId = 'cell_' . $year . '_' . $month . '_' . $day['day'] . '_' . $index;
+                                $isUnavailable = $day['isUnavailable'];
                             @endphp
-
-                            <td wire:click="markDateUnavailable('{{ $day['date'] }}')"
-                                class="{{ $isUnavailable ? 'unavailable' : 'available' }}">
+                            <td wire:click="markDateUnavailable('{{ $date }}')"
+                                class="{{ $isUnavailable ? 'unavailable' : 'available' }}" id="{{ $cellId }}">
                                 {{ $day['day'] }}
                             </td>
                         @else
@@ -41,9 +35,11 @@
                     @endforeach
                 </tr>
             @endforeach
+
         </tbody>
     </table>
 </div>
+
 
 <style>
     header {

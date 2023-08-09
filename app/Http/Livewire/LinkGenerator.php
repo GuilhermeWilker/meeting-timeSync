@@ -13,7 +13,7 @@ class LinkGenerator extends Component
     public function generateGuestLink()
     {
         $randomString = Str::random(10);
-        $this->guestLink = route('guest.view', ['u' => $randomString]);
+        $this->guestLink = route('guest.view', ['invite' => $randomString]);
         $this->linkGenerated = true;
     }
 
