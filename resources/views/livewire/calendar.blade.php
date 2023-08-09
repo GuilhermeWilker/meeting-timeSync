@@ -46,10 +46,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-block: 2px;
     }
 
     header h2 {
-        font-weight: 500;
+        font-weight: 700;
         font-size: 18px
     }
 

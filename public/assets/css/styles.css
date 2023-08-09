@@ -130,3 +130,10 @@ body {
     color: #000000 !important;
     cursor: not-allowed;
 }
+
+.calendario h4 {
+    font-weight: 700;
+    font-size: 20px;
+    padding-block: 20px;
+    color: #818181;
+}

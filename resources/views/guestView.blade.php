@@ -66,6 +66,12 @@
         </article>
 
         <section class="calendario">
+            <div>
+                <h4>
+                    Selecione algum dia disponível para notificar <br>
+                    o organizador para uma reunião!
+                </h4>
+            </div>
             <livewire:calendar />
         </section>
     </main>
