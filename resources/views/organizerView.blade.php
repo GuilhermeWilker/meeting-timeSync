@@ -132,12 +132,11 @@
 
 
                 <div class="bio-dashboard">
-                    <p>Adicione uma pequena bio..</p> <br>
-                    <textarea class="bio-textarea" placeholder="fale um pouco sobre você.."></textarea>
+                    <livewire:bio-textarea />
                 </div>
             </div>
 
-            <div class="plataformas">
+            {{-- <div class="plataformas">
                 <div class="plataforma">
                     <div class="img">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Meet_icon_%282020%29.svg/512px-Google_Meet_icon_%282020%29.svg.png?20221213135236"
@@ -154,7 +153,7 @@
 
                     <h3>Zoom</h3>
                 </div>
-            </div>
+            </div> --}}
 
         </article>
 

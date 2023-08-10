@@ -60,11 +60,9 @@ class Calendar extends Component
     {
         $dateEntry = UnavailableDate::where('date', $date)->first();
 
-        if ($dateEntry) {
-            $dateEntry->delete();
-        } else {
-            UnavailableDate::create(['date' => $date]);
-        }
+        $dateEntry
+            ? $dateEntry->delete()
+            : UnavailableDate::create(['date' => $date]);
 
         $this->generateCalendar();
     }

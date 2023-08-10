@@ -34,8 +34,19 @@ body {
     background: #fff;
 }
 
+.organizador__actions-dashboard {
+    display: grid;
+    grid: center;
+
+    width: 1326px;
+    height: 100%;
+    border-radius: 11px;
+    background-color: #fff;
+    padding: 25px 40px;
+}
+
 .organizador__actions-header {
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
 }
