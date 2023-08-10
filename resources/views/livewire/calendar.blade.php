@@ -50,8 +50,9 @@
     }
 
     header h2 {
-        font-weight: 700;
-        font-size: 18px
+        font-weight: 600;
+        font-size: 15px;
+        padding-inline-start: 76%;
     }
 
     td {
@@ -87,6 +88,8 @@
     tr th {
         padding-block: 25px;
         font-size: 16px;
+
+        font-weight: 400;
     }
 
     button {

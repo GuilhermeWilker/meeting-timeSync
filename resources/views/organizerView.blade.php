@@ -110,30 +110,33 @@
 <body>
     <main class="container">
         <article class="organizador__actions-dashboard">
-            <header class="organizador__actions-header">
-                <div>
-                    <h1>Guilherme Wilker.</h1>
-                    <p>Agende uma call para discutirmos seu projeto!</p>
-                </div>
 
-                <div>
-                    <livewire:link-generator />
-                </div>
+            <div class="organizador__actions-sidebar">
+                <header class="organizador__actions-header">
+                    <div>
+                        <h1>Guilherme Wilker.</h1>
+                        <p>Agende uma call para discutirmos seu projeto!</p>
 
-            </header>
+                        <livewire:link-generator />
+                    </div>
+                </header>
+
+                <div class="bio-dashboard">
+                    <livewire:bio-textarea />
+                </div>
+            </div>
+
 
             <div class="actions-dashboard">
                 <div>
-                    <p>Selecione os dias onde não realiza meetings..</p> <br>
+                    <p>Selecione os dias onde não realiza meetings..</p>
                     <div class="calendar-dashboard">
                         <livewire:calendar />
                     </div>
                 </div>
 
 
-                <div class="bio-dashboard">
-                    <livewire:bio-textarea />
-                </div>
+
             </div>
 
             {{-- <div class="plataformas">
