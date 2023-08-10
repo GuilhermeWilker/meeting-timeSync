@@ -8,8 +8,10 @@
 }
 
 .minutes-per-call {
-    font-weight: 600;
+    font-weight: 800;
     padding-block: 25px;
+    font-size: 15px;
+    color: #1c1c1c;
 }
 
 body {
@@ -72,9 +74,9 @@ body {
 .organizador__actions-header p {
     color: #b7b7b7;
     font-family: Cooper Hewitt;
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: normal;
 }
 
@@ -84,7 +86,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
+    padding-block: 60px;
 }
 
 .organizador__actions-bio p {
@@ -95,13 +97,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 150px;
+    margin-block: 50px;
 }
 
 .organizador__actions-plataformas small {
     color: #b7b7b7;
     font-family: Cooper Hewitt;
     font-size: 14px;
+    font-weight: 700;
 }
 
 .organizador__actions-plataformas .plataformas {
@@ -115,22 +118,24 @@ body {
 }
 
 .organizador__actions-plataformas .plataforma {
-    width: 245px;
-    height: 90px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    background: #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 180px;
+    height: 67.55px;
+    border-radius: 6px;
+    background: #d1d1d1;
     gap: 15px;
-
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 800 !important;
+    padding: 5px;
 }
 
 .organizador__actions-plataformas .plataforma:nth-child(2n) {
     gap: 0px;
     cursor: pointer;
+    padding-left: -20px;
 }
 
 .organizador__actions-plataformas .plataforma .img img {
@@ -141,6 +146,7 @@ body {
 .organizador__actions-plataformas .plataforma:nth-child(2n) .img img {
     max-width: 70px;
     max-height: 70px;
+    margin-left: -60px;
 }
 
 .calendar-dashboard td.unavailable {
@@ -159,8 +165,8 @@ body {
 }
 
 .calendario h4 {
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: 710;
+    font-size: 24px;
     padding-block: 20px;
     color: #818181;
 }
