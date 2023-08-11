@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,5 @@ Route::get('/auth', function () {
     return view('authView');
 });
 
-Route::get('/register', function () {
-    return view('registerView');
-});
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/register', [UserController::class, 'store'])->name('register');

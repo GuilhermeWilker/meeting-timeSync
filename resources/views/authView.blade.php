@@ -12,6 +12,15 @@
 <body>
     <main class="container">
         <form action="" class="form">
+
+            @if (session()->has('success'))
+                {{ session()->get('success') }}
+            @elseif(session()->has('error'))
+                {{ session()->get('error') }}
+            @endif
+
+            @csrf
+
             <div class="form__legend">
                 <h3>Timesync</h3>
                 <p>Faça seu login abaixo para começar a utilizar e começar a agendar suas reuniões!</p>

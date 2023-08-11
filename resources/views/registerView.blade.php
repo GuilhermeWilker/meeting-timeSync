@@ -4,14 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registro de conta</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/fonts.css">
 </head>
 
 <body>
     <main class="container">
-        <form action="" class="form">
+        <form action="{{ route('register') }}" class="form" method="POST">
+
+            @if (session()->has('success'))
+                {{ session()->get('success') }}
+            @elseif(session()->has('error'))
+                {{ session()->get('error') }}
+            @endif
+
+            @csrf
             <div class="form__legend-register">
                 <h3>Timesync</h3>
                 <p>Faça seu cadastro abaixo e começe a agendar suas reuniões!</p>
@@ -22,16 +30,20 @@
                 <div class="form-group">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" placeholder="João" />
+                    {{ $errors->first('name') }}
                 </div>
 
                 <div class="form-group">
                     <label for="lastname">Sobrenome:</label>
                     <input type="text" name="lastname" placeholder="Silva" />
+                    {{ $errors->first('lastname') }}
+
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" name="email" placeholder="joao.silva@gmail.com" />
+                    {{ $errors->first('email') }}
                 </div>
 
                 <div class="form-group">
