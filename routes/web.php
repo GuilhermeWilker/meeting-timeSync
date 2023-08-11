@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [GuestController::class, 'index'])->name('guest.view');
 
 Route::get('/dashboard', [OrganizerController::class, 'index']);
+
+Route::get('/auth', function () {
+    return view('authView');
+});

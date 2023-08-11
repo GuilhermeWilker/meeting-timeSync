@@ -134,32 +134,9 @@
                         <livewire:calendar />
                     </div>
                 </div>
-
-
-
             </div>
 
-            {{-- <div class="plataformas">
-                <div class="plataforma">
-                    <div class="img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Meet_icon_%282020%29.svg/512px-Google_Meet_icon_%282020%29.svg.png?20221213135236"
-                            alt="plataforma de meeting, Google Meet">
-                    </div>
-
-                    <h3>Google meet</h3>
-                </div>
-                <div class="plataforma">
-                    <div class="img">
-                        <img src="https://www.freepnglogos.com/uploads/zoom-logo-png/zoom-meeting-logo-transparent-png-21.png"
-                            alt="plataforma de meeting, Zoom">
-                    </div>
-
-                    <h3>Zoom</h3>
-                </div>
-            </div> --}}
-
         </article>
-
     </main>
     @livewireScripts
 
