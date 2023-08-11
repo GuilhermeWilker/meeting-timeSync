@@ -22,3 +22,7 @@ Route::get('/dashboard', [OrganizerController::class, 'index']);
 Route::get('/auth', function () {
     return view('authView');
 });
+
+Route::get('/register', function () {
+    return view('registerView');
+});

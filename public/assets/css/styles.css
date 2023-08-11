@@ -224,7 +224,7 @@ body {
     color: #000;
 
     font-size: 16px;
-    font-weight: 713;
+    font-weight: 650;
 }
 
 .form .form__input-actions .form-group input {
@@ -238,7 +238,7 @@ body {
 }
 
 .form .form__input-actions .form__input-submit {
-    margin-block: 5px;
+    margin-block: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -254,4 +254,25 @@ body {
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.form .form__legend-register {
+    width: 335px;
+    margin-inline: auto;
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.form .form__legend-register h3 {
+    color: #000;
+    font-size: 40px;
+    font-weight: 713;
+}
+
+.form .form__legend-register p {
+    color: #131313;
+
+    font-size: 16px;
+    font-weight: 707;
 }
