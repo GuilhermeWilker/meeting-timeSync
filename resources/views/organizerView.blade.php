@@ -114,7 +114,16 @@
             <div class="organizador__actions-sidebar">
                 <header class="organizador__actions-header">
                     <div>
-                        <h1>Guilherme Wilker.</h1>
+                        <div class="logout-btn">
+                            <a href="{{ route('login.destroy') }}">logout</a>
+                        </div>
+
+                        @auth
+                            <h1>
+                                {{ auth()->user()->name }} {{ auth()->user()->lastname }}
+                            </h1>
+                        @endauth
+
                         <p>Agende uma call para discutirmos seu projeto!</p>
 
                         <livewire:link-generator />

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [GuestController::class, 'index'])->name('guest.view');
+Route::get('/guest', [GuestController::class, 'index'])->name('guest.view');
 
-Route::get('/dashboard', [OrganizerController::class, 'index']);
+Route::get('/', [OrganizerController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::get('/auth', function () {
-    return view('authView');
-});
+Route::get('/auth', [LoginController::class, 'index'])->name('login');
+Route::post('/auth', [LoginController::class, 'store'])->name('login.store');
+Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store'])->name('register');

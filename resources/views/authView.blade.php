@@ -11,14 +11,7 @@
 
 <body>
     <main class="container">
-        <form action="" class="form">
-
-            @if (session()->has('success'))
-                {{ session()->get('success') }}
-            @elseif(session()->has('error'))
-                {{ session()->get('error') }}
-            @endif
-
+        <form action="{{ route('login.store') }}" class="form" method="POST">
             @csrf
 
             <div class="form__legend">
@@ -29,12 +22,13 @@
             <div class="form__input-actions">
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" placeholder="joao.silva@gmail.com" />
+                    <input type="email" name="email" placeholder="joao.silva@gmail.com"
+                        value="wilkerguilherme0@gmail.com" />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Senha:</label>
-                    <input type="password" name="password" placeholder="***********"> <br>
+                    <input type="password" name="password" placeholder="***********" value="123"> <br>
                     <small class="password-tip">
                         Esqueci minha senha
                     </small>

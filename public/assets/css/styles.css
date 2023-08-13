@@ -7,6 +7,19 @@
     font-weight: 300;
 }
 
+.logout-btn {
+    margin-block: 15px;
+}
+
+.logout-btn a {
+    padding: 8px;
+    background-color: #202020;
+    color: white;
+    margin-bottom: 8px;
+
+    border-radius: 6px;
+}
+
 .minutes-per-call {
     font-weight: 800;
     padding-block: 25px;
@@ -54,10 +67,9 @@ body {
     border-radius: 11px;
     background: #fff;
     width: 450px;
-    height: 100%;
     flex-shrink: 0;
 
-    padding: 60px 40px;
+    padding: 40px;
 }
 
 .organizador__actions-header {
