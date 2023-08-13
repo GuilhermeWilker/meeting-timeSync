@@ -1,7 +1,7 @@
 <div class="bio-textarea_component">
     <form wire:submit.prevent="saveBio">
         <p>Adicione uma pequena bio..</p>
-        <textarea wire:model="bio" class="bio-textarea" placeholder="fale um pouco sobre você.." maxlength="450"></textarea>
+        <textarea wire:model="bio" class="bio-textarea" placeholder="{{ auth()->user()->bio }}" maxlength="450"></textarea>
 
         <div class="char-limit-indicator">
             {{ strlen($bio) }} / 450

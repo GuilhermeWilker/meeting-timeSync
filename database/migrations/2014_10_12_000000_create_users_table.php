@@ -16,7 +16,7 @@ return new class() extends Migration {
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->text('bio')->default('');
+            $table->text('bio')->default('Fale um pouco sobre você..');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
