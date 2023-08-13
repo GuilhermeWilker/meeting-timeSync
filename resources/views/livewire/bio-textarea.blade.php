@@ -1,14 +1,17 @@
 <div class="bio-textarea_component">
-    <p>Adicione uma pequena bio..</p>
-    <textarea wire:model="bio" class="bio-textarea" placeholder="fale um pouco sobre você.." maxlength="450"></textarea>
+    <form wire:submit.prevent="saveBio">
+        <p>Adicione uma pequena bio..</p>
+        <textarea wire:model="bio" class="bio-textarea" placeholder="fale um pouco sobre você.." maxlength="450"></textarea>
 
-    <div class="char-limit-indicator">
-        {{ strlen($bio) }} / 450
-        @if (strlen($bio) >= 450)
-            <span class="char-limit-exceeded">(Limite excedido)</span>
-        @endif
-    </div>
+        <div class="char-limit-indicator">
+            {{ strlen($bio) }} / 450
+            @if (strlen($bio) >= 450)
+                <span class="char-limit-exceeded">(Limite excedido)</span>
+            @endif
+        </div>
 
+        <button type="submit">Salvar Bio</button>
+    </form>
 </div>
 
 <style>

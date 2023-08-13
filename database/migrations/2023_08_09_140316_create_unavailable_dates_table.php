@@ -12,6 +12,7 @@ return new class() extends Migration {
     {
         Schema::create('unavailable_dates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Adicione esta linha
             $table->timestamp('date')->nullable();
             $table->timestamps();
         });

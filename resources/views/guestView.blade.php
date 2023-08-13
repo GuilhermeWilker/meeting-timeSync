@@ -15,29 +15,26 @@
             <div class="organizador__actions-sidebar">
                 <header class="organizador__actions-header">
                     <div>
-                        <h1>Guilherme Wilker.</h1>
+                        <h1>{{ auth()->user()->name }} {{ auth()->user()->lastname }}</h1>
                         <p>Agende uma call para discutirmos seu projeto!</p>
                     </div>
                 </header>
 
                 <div class="organizador__actions-bio">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
+                        {!! nl2br(auth()->user()->bio) !!}
                     </p>
 
-                    <p>
+                    {{-- <p>
                         Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    </p> --}}
 
                 </div>
 
                 <div class="organizador__actions-plataformas">
-                    <small>Guilherme aceita as seguintes plataformas para meeting!</small>
+                    <small>*{{ auth()->user()->name }}* aceita as seguintes plataformas para meeting!</small>
 
 
                     <div class="plataformas">

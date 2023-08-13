@@ -24,6 +24,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+        'bio',
     ];
 
     /**
@@ -51,5 +52,10 @@ class User extends Authenticatable
         $data['password'] = bcrypt($data['password']);
 
         return $this->create($data);
+    }
+
+    public function unavailableDates()
+    {
+        return $this->hasMany(UnavailableDate::class);
     }
 }

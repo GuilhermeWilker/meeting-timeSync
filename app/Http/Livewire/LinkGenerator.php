@@ -20,6 +20,8 @@ class LinkGenerator extends Component
      */
     public function generateGuestLink()
     {
+        $user = auth()->user();
+
         // Gerando string aleatória de até 10 caracteres
         $randomString = Str::random(10);
 
