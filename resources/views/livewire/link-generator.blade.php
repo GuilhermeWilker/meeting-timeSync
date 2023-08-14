@@ -1,6 +1,5 @@
 <div>
 
-
     <div class="link-generator">
         <input class="link-generator__input" type="text" readonly wire:model="guestLink"
             placeholder="seu link será gerado aqui.." />
@@ -12,9 +11,7 @@
                 <span style="color: green;">Copie o link acima!</span>
             </small>
         @endif
-
     </div>
-
 
 </div>
 

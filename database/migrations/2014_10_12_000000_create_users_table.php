@@ -19,6 +19,7 @@ return new class() extends Migration {
             $table->text('bio')->default('Fale um pouco sobre você..');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('guest_link')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));

@@ -15,14 +15,14 @@
             <div class="organizador__actions-sidebar">
                 <header class="organizador__actions-header">
                     <div>
-                        <h1>{{ auth()->user()->name }} {{ auth()->user()->lastname }}</h1>
+                        <h1>{{ $user->name }} {{ $user->lastname }}</h1>
                         <p>Agende uma call para discutirmos seu projeto!</p>
                     </div>
                 </header>
 
                 <div class="organizador__actions-bio">
                     <p>
-                        {!! nl2br(auth()->user()->bio) !!}
+                        {!! nl2br($user->bio) !!}
                     </p>
 
                     {{-- <p>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="organizador__actions-plataformas">
-                    <small>*{{ auth()->user()->name }}* aceita as seguintes plataformas para meeting!</small>
+                    <small>*{{ $user->name }}* aceita as seguintes plataformas para meeting!</small>
 
 
                     <div class="plataformas">
@@ -69,7 +69,10 @@
                     o organizador da reunião!
                 </h4>
             </div>
-            <livewire:calendar />
+
+            <livewire:calendar :organizer="$user" />
+
+
         </section>
     </main>
 </body>

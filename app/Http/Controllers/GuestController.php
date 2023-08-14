@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -9,9 +10,18 @@ class GuestController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('guestView');
+        if ($request->has('organizer')) {
+            $organizerId = substr($request->input('organizer'), 3);
+            $user = User::find($organizerId);
+
+            if ($user) {
+                return view('guestView', ['user' => $user, 'organizer' => auth()->user()]);
+            }
+        }
+
+        return abort(404);
     }
 
     /**

@@ -7,29 +7,45 @@ use Livewire\Component;
 
 class LinkGenerator extends Component
 {
+    public $user;
     public $guestLink;
     public $linkGenerated = false;
 
-    /**
-     * |                                             |
-     * | Gera um link único para enviar ao convidado |
-     * |                                             |.
-     *
-     * O link gerado é armazenado na propriedade guestLink da classe
-     * e a flag linkGenerated é definida como verdadeira.
-     */
     public function generateGuestLink()
     {
-        $user = auth()->user();
+        if (auth()->check()) {
+            $user = auth()->user();
 
-        // Gerando string aleatória de até 10 caracteres
-        $randomString = Str::random(10);
+            if (!$user->guest_link) {
+                $randomString = Str::random(10);
+                $randomStringOrganizer = Str::random(3);
 
-        // Construindo o link utilizando query params --> site.com?invite_guest=BhYiIGDp2
-        $this->guestLink = route('guest.view',
-            ['invite_guest' => $randomString]);
+                $guestLink = route('guest.view', [
+                    'organizer' => $randomStringOrganizer.$user->id,
+                    'invite' => $randomString,
+                ]);
 
-        $this->linkGenerated = true;
+                $user->update([
+                    'guest_link' => $guestLink,
+                ]);
+            }
+
+            $this->user = $user;
+            $this->guestLink = $user->guest_link;
+            $this->linkGenerated = true;
+
+            // Pass the unavailableDates to the Calendar component
+            $this->emit('guestLinkGenerated', $user->unavailableDates->pluck('date')->toArray());
+        }
+    }
+
+    public function mount()
+    {
+        if (auth()->check()) {
+            $this->user = auth()->user();
+            $this->guestLink = $this->user->guest_link;
+            $this->linkGenerated = true;
+        }
     }
 
     public function render()

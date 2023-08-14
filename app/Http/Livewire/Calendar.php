@@ -10,10 +10,25 @@ class Calendar extends Component
     public $month;
     public $weeks = [];
     public $user;
+    public $guestLink;
+    public $linkGenerated;
+    public $unavailableDates;
 
-    public function mount()
+    protected $listeners = ['guestLinkGenerated' => 'updateUnavailableDates'];
+
+    public function mount($organizer = null)
     {
-        $this->user = auth()->user();
+        if (auth()->check()) {
+            $this->user = auth()->user();
+            $this->guestLink = $this->user->guest_link;
+            $this->linkGenerated = true;
+        }
+
+        // Se o usuário for convidado e houver um organizador, defina-o
+        if (!$this->user && $organizer) {
+            $this->user = $organizer;
+        }
+
         $today = now();
         $this->year = $today->year;
         $this->month = $today->month;
@@ -38,8 +53,8 @@ class Calendar extends Component
             $date = $this->year.'-'.$this->month.'-'.str_pad($day, 2, '0', STR_PAD_LEFT);
 
             // Check if the date is unavailable for the current user
-            $isUnavailable = $this->user->unavailableDates()->where('date', $date)->exists();
-            $isAvailable = !$isUnavailable;
+            $isUnavailable = auth()->check() && $this->user->unavailableDates()->where('date', $date)->exists();
+            $isAvailable = auth()->guest() || !$isUnavailable;
 
             $this->weeks[$currentWeek][] = [
                 'day' => $day,
@@ -61,19 +76,34 @@ class Calendar extends Component
 
     public function markDateUnavailable($date)
     {
-        $dateEntry = $this->user->unavailableDates()->where('date', $date)->first();
+        if (auth()->check()) {
+            $dateEntry = auth()->user()->unavailableDates()->where('date', $date)->first();
 
-        $dateEntry
-            ? $dateEntry->delete()
-            : $this->user->unavailableDates()->create(['date' => $date]);
+            if ($dateEntry) {
+                $dateEntry->delete();
+            } else {
+                auth()->user()->unavailableDates()->create(['date' => $date]);
+            }
 
+            $this->generateCalendar();
+        }
+    }
+
+    public function updateUnavailableDates($unavailableDates)
+    {
+        $this->unavailableDates = $unavailableDates;
         $this->generateCalendar();
     }
 
-    public function render()
-    {
-        return view('livewire.calendar', [
-            'unavailableDates' => $this->user->unavailableDates->pluck('date')->toArray(),
-        ]);
-    }
+   public function render()
+   {
+       $unavailableDates = [];
+       if (auth()->check()) {
+           $unavailableDates = auth()->user()->unavailableDates->pluck('date')->toArray();
+       }
+
+       return view('livewire.calendar', [
+           'unavailableDates' => $unavailableDates,
+       ]);
+   }
 }

@@ -12,9 +12,12 @@ return new class() extends Migration {
     {
         Schema::create('unavailable_dates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Adicione esta linha
+            $table->unsignedBigInteger('user_id'); // Chave estrangeira para associar a usuário
             $table->timestamp('date')->nullable();
             $table->timestamps();
+
+            // Definir a chave estrangeira
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
