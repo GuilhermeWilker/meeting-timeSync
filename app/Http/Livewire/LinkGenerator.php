@@ -7,49 +7,63 @@ use Livewire\Component;
 
 class LinkGenerator extends Component
 {
-    public $user;
-    public $guestLink;
-    public $linkGenerated = false;
+    public object $user;
+    public string $guestLink = '';
+    public bool $linkGenerated = false;
 
-    public function generateGuestLink()
+    public function generateGuestLink(): void
     {
         if (auth()->check()) {
-            $user = auth()->user();
+            $this->user = $user = auth()->user();
 
             if (!$user->guest_link) {
-                $randomString = Str::random(10);
-                $randomStringOrganizer = Str::random(3);
-
-                $guestLink = route('guest.view', [
-                    'organizer' => $randomStringOrganizer.$user->id,
-                    'invite' => $randomString,
-                ]);
-
-                $user->update([
-                    'guest_link' => $guestLink,
-                ]);
+                $this->generateAndSaveGuestLink($user);
             }
 
-            $this->user = $user;
-            $this->guestLink = $user->guest_link;
-            $this->linkGenerated = true;
-
-            // Pass the unavailableDates to the Calendar component
-            $this->emit('guestLinkGenerated', $user->unavailableDates->pluck('date')->toArray());
+            $this->updatePropertiesWithUser($user);
+            $this->emitUnavailableDatesToGuestCalendar($user);
         }
     }
 
-    public function mount()
+    public function mount(): void
     {
         if (auth()->check()) {
             $this->user = auth()->user();
-            $this->guestLink = $this->user->guest_link;
-            $this->linkGenerated = true;
         }
     }
 
     public function render()
     {
         return view('livewire.link-generator');
+    }
+
+    private function generateAndSaveGuestLink(object $user): void
+    {
+        $randomString = Str::random(10);
+        $randomStringOrganizer = Str::random(3);
+
+        $guestLink = route('guest.view', [
+            'organizer' => $randomStringOrganizer.$user->id,
+            'invite' => $randomString,
+        ]);
+
+        $user->update([
+            'guest_link' => $guestLink,
+        ]);
+    }
+
+    private function updatePropertiesWithUser(object $user): void
+    {
+        $this->guestLink = $user->guest_link;
+        $this->linkGenerated = true;
+    }
+
+    private function emitUnavailableDatesToGuestCalendar(object $user): void
+    {
+        $unavailableDates = $user->unavailableDates
+            ->pluck('date')
+            ->toArray();
+
+        $this->emit('guestLinkGenerated', $unavailableDates);
     }
 }

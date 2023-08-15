@@ -30,16 +30,11 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $validated = $request->validated();
-
-        // $saved = (new User())->create($validated);
-
         $saved = (new User())->insert($validated);
 
-        if ($saved) {
-            Session::flash('success', 'cadastrado com sucesso');
-        } else {
-            Session::flash('error', 'Não foi possível realizar o cadastro..');
-        }
+        $saved
+            ? Session::flash('success', 'cadastrado com sucesso')
+            : Session::flash('error', 'Não foi possível realizar o cadastro..');
 
         return redirect('/auth');
     }

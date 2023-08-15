@@ -2,21 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class Calendar extends Component
 {
-    public $year;
-    public $month;
-    public $weeks = [];
-    public $user;
-    public $guestLink;
-    public $linkGenerated;
-    public $unavailableDates;
+    public int $year;
+    public int $month;
+    public array $weeks = [];
+    public ?User $user = null;
+    public ?string $guestLink = null;
+    public bool $linkGenerated = false;
+    public array $unavailableDates = [];
 
     protected $listeners = ['guestLinkGenerated' => 'updateUnavailableDates'];
 
-    public function mount($organizer = null)
+    public function mount(?int $organizerId = null): void
     {
         if (auth()->check()) {
             $this->user = auth()->user();
@@ -25,8 +26,8 @@ class Calendar extends Component
         }
 
         // Se o usuário for convidado e houver um organizador, defina-o
-        if (!$this->user && $organizer) {
-            $this->user = $organizer;
+        if (!$this->user && $organizerId) {
+            $this->user = User::find($organizerId);
         }
 
         $today = now();
@@ -36,7 +37,7 @@ class Calendar extends Component
         $this->generateCalendar();
     }
 
-    private function generateCalendar()
+    private function generateCalendar(): void
     {
         $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year);
         $firstDayOfMonth = date('w', strtotime($this->year.'-'.$this->month.'-01'));
@@ -44,7 +45,7 @@ class Calendar extends Component
         $this->weeks = [];
         $currentWeek = 0;
 
-        // Adicionar dias vazios no início do mês (se necessário)
+        // Preencher dias vazios no início do mês (se necessário)
         for ($day = 0; $day < $firstDayOfMonth; ++$day) {
             $this->weeks[$currentWeek][] = null;
         }
@@ -53,7 +54,10 @@ class Calendar extends Component
             $date = $this->year.'-'.$this->month.'-'.str_pad($day, 2, '0', STR_PAD_LEFT);
 
             // Check if the date is unavailable for the current user
-            $isUnavailable = auth()->check() && $this->user->unavailableDates()->where('date', $date)->exists();
+            $isUnavailable = $this->user
+                ->unavailableDates()
+                ->where('date', $date)->exists();
+
             $isAvailable = auth()->guest() || !$isUnavailable;
 
             $this->weeks[$currentWeek][] = [
@@ -74,36 +78,39 @@ class Calendar extends Component
         }
     }
 
-    public function markDateUnavailable($date)
+    public function markDateUnavailable(string $date): void
     {
         if (auth()->check()) {
-            $dateEntry = auth()->user()->unavailableDates()->where('date', $date)->first();
+            $dateEntry = auth()->user()
+                ->unavailableDates()
+                ->where('date', $date)->first();
 
-            if ($dateEntry) {
-                $dateEntry->delete();
-            } else {
-                auth()->user()->unavailableDates()->create(['date' => $date]);
-            }
+            $dateEntry
+                ? $dateEntry->delete()
+                : auth()->user()
+                    ->unavailableDates()
+                    ->create(['date' => $date]);
 
             $this->generateCalendar();
         }
     }
 
-    public function updateUnavailableDates($unavailableDates)
+    public function updateUnavailableDates(array $unavailableDates): void
     {
         $this->unavailableDates = $unavailableDates;
         $this->generateCalendar();
     }
 
-   public function render()
-   {
-       $unavailableDates = [];
-       if (auth()->check()) {
-           $unavailableDates = auth()->user()->unavailableDates->pluck('date')->toArray();
-       }
+    public function render(): \Illuminate\View\View
+    {
+        $unavailableDates = auth()->check()
+        ? auth()->user()
+            ->unavailableDates
+            ->pluck('date')->toArray()
+        : [];
 
-       return view('livewire.calendar', [
-           'unavailableDates' => $unavailableDates,
-       ]);
-   }
+        return view('livewire.calendar', [
+            'unavailableDates' => $unavailableDates,
+        ]);
+    }
 }

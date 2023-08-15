@@ -70,7 +70,7 @@
                 </h4>
             </div>
 
-            <livewire:calendar :organizer="$user" />
+            <livewire:calendar :organizerId="$user->id" />
 
 
         </section>
