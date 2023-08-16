@@ -24,8 +24,16 @@
                                 $cellId = 'cell_' . $year . '_' . $month . '_' . $day['day'] . '_' . $index;
                                 $isUnavailable = $day['isUnavailable'];
                             @endphp
-                            <td wire:click="markDateUnavailable('{{ $date }}')"
-                                class="{{ $isUnavailable ? 'unavailable' : 'available' }}" id="{{ $cellId }}">
+                            <td
+                                @auth
+wire:click="markDateUnavailable('{{ $date }}')"
+                                    class="{{ $isUnavailable ? 'unavailable' : 'available' }}"
+                                    id="{{ $cellId }}"
+                                @else
+                                    class="{{ $isUnavailable ? 'unavailable' : 'available' }} visitor-cell"
+                                    @if (!$isUnavailable)
+                                    wire:click="openModal('{{ $date }}')"
+                                    @endif @endauth>
                                 {{ $day['day'] }}
                             </td>
                         @else
@@ -35,9 +43,20 @@
                     @endforeach
                 </tr>
             @endforeach
-
         </tbody>
     </table>
+
+    <div>
+        @if ($isModalOpen)
+            <div class="modal-background">
+                <div class="modal">
+                    <h3>Disponibilidade para {{ $selectedDate }}</h3>
+                    <button wire:click="closeModal">Fechar</button>
+                </div>
+            </div>
+        @endif
+    </div>
+
 </div>
 
 
@@ -100,5 +119,29 @@
     /* Estilo para os dias de outros meses */
     .month-day {
         opacity: 1;
+    }
+
+    .visitor-cell {
+        cursor: pointer;
+    }
+
+    .modal-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 </style>

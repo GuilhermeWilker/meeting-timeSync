@@ -14,8 +14,22 @@ class Calendar extends Component
     public ?string $guestLink = null;
     public bool $linkGenerated = false;
     public array $unavailableDates = [];
+    public bool $isModalOpen = false;
+    public string $selectedDate;
 
     protected $listeners = ['guestLinkGenerated' => 'updateUnavailableDates'];
+
+    public function openModal(string $date): void
+    {
+        $this->selectedDate = $date;
+        $this->isModalOpen = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->isModalOpen = false;
+        $this->selectedDate = '';
+    }
 
     public function mount(?int $organizerId = null): void
     {
