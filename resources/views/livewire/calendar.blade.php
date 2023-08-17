@@ -27,13 +27,13 @@
                             <td
                                 @auth
 wire:click="markDateUnavailable('{{ $date }}')"
-                                    class="{{ $isUnavailable ? 'unavailable' : 'available' }}"
-                                    id="{{ $cellId }}"
-                                @else
-                                    class="{{ $isUnavailable ? 'unavailable' : 'available' }} visitor-cell"
-                                    @if (!$isUnavailable)
-                                    wire:click="openModal('{{ $date }}')"
-                                    @endif @endauth>
+                                class="{{ $isUnavailable ? 'unavailable' : 'available' }}"
+                                id="{{ $cellId }}"
+                            @else
+                                class="{{ $isUnavailable ? 'unavailable' : 'available' }} visitor-cell"
+                                @if (!$isUnavailable)
+                                wire:click="openModal('{{ $date }}')"
+                                @endif @endauth>
                                 {{ $day['day'] }}
                             </td>
                         @else
@@ -46,17 +46,26 @@ wire:click="markDateUnavailable('{{ $date }}')"
         </tbody>
     </table>
 
+    {{-- Modal --}}
     <div>
         @if ($isModalOpen)
             <div class="modal-background">
                 <div class="modal">
-                    <h3>Disponibilidade para {{ $selectedDate }}</h3>
-                    <button wire:click="closeModal">Fechar</button>
+                    <legend>
+                        Agende sua reunião com <span>{{ $user->name }}</span>,
+                        <br> insira seu email abaixo!
+                    </legend>
+                    <div class="form-group">
+                        <label for="email">Seu email:</label>
+                        <input type="email" name="email" placeholder="joao.silva@gmail.com" />
+                    </div>
+
+                    <button type="submit" wire:click="closeModal">Agendar meeting!</button>
+                    <button wire:click="closeModal">Cancelar</button>
                 </div>
             </div>
         @endif
     </div>
-
 </div>
 
 
@@ -141,7 +150,41 @@ wire:click="markDateUnavailable('{{ $date }}')"
         background-color: white;
         border-radius: 10px;
         padding: 20px;
-        width: 300px;
+        width: 500px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal legend {
+        font-weight: 600;
+    }
+
+    .modal legend>span {
+        text-decoration: underline;
+        font-weight: 600;
+    }
+
+    .modal .form-group {
+        width: 100%;
+        margin-block: 20px;
+    }
+
+    .modal .form-group label {
+        color: #000;
+        font-size: 14px;
+
+        font-weight: 709;
+    }
+
+    .modal .form-group input {
+        width: 100%;
+        height: 50px;
+        border-radius: 3px;
+        border: 2px solid #F1F1F1;
+
+        padding: 20px;
+    }
+
+    .modal button {
+        padding: 8px;
     }
 </style>
