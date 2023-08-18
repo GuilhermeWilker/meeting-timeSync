@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\MeetingScheduled;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Calendar extends Component
@@ -15,7 +17,10 @@ class Calendar extends Component
     public bool $linkGenerated = false;
     public array $unavailableDates = [];
     public bool $isModalOpen = false;
-    public string $selectedDate;
+
+    public string $selectedDate = '';
+    public string $visitorName = '';
+    public string $visitorEmail = '';
 
     protected $listeners = ['guestLinkGenerated' => 'updateUnavailableDates'];
 
@@ -29,6 +34,26 @@ class Calendar extends Component
     {
         $this->isModalOpen = false;
         $this->selectedDate = '';
+        $this->visitorName = '';
+        $this->visitorEmail = '';
+    }
+
+    public function scheduleMeeting(): void
+    {
+        if ($this->user) {
+            $this->scheduleMeetingEmail();
+        }
+
+        $this->closeModal();
+    }
+
+    private function scheduleMeetingEmail(): void
+    {
+        $meetingDate = \Carbon\Carbon::createFromFormat('Y-m-d', $this->selectedDate)->format('F j, Y');
+        $organizerEmail = $this->user->email;
+
+        Mail::to($this->user->email)->send(new MeetingScheduled($this->visitorName, $this->visitorEmail, $meetingDate, $organizerEmail, $this->user));
+        Mail::to($this->visitorEmail)->send(new MeetingScheduled($this->visitorName, $this->visitorEmail, $meetingDate, $organizerEmail, $this->user));
     }
 
     public function mount(?int $organizerId = null): void

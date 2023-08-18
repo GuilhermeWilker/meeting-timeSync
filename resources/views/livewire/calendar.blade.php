@@ -50,141 +50,159 @@ wire:click="markDateUnavailable('{{ $date }}')"
     <div>
         @if ($isModalOpen)
             <div class="modal-background">
-                <div class="modal">
+                <form class="modal">
                     <legend>
                         Agende sua reunião com <span>{{ $user->name }}</span>,
-                        <br> insira seu email abaixo!
+                        <br> insira seu nome e email abaixo!
                     </legend>
+
                     <div class="form-group">
-                        <label for="email">Seu email:</label>
-                        <input type="email" name="email" placeholder="joao.silva@gmail.com" />
+                        <label for="visitorName">Seu nome:</label>
+                        <input type="text" name="visitorName" wire:model="visitorName" />
                     </div>
 
-                    <button type="submit" wire:click="closeModal">Agendar meeting!</button>
-                    <button wire:click="closeModal">Cancelar</button>
-                </div>
+                    <div class="form-group">
+                        <label for="visitorEmail">Seu email:</label>
+                        <input type="email" name="visitorEmail" wire:model="visitorEmail" />
+                    </div>
+
+                    <button type="button" wire:click="scheduleMeeting">Agendar reunião</button>
+                    <button type="button" wire:click="closeModal">Cancelar</button>
+                </form>
             </div>
         @endif
     </div>
-</div>
 
 
-<style>
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-block: 2px;
-    }
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 2px;
+        }
 
-    header h2 {
-        font-weight: 600;
-        font-size: 15px;
-        padding-inline-start: 76%;
-    }
+        header h2 {
+            font-weight: 600;
+            font-size: 15px;
+            padding-inline-start: 76%;
+        }
 
-    td {
-        border-radius: 6px;
-        text-align: center;
+        td {
+            border-radius: 6px;
+            text-align: center;
 
-        padding: 5px;
-        width: 60px;
-        height: 60px;
+            padding: 5px;
+            width: 60px;
+            height: 60px;
 
-        cursor: pointer;
-        background-color: #fff;
+            cursor: pointer;
+            background-color: #fff;
 
-        opacity: 0.25;
-        transition: .3s;
-    }
+            opacity: 0.25;
+            transition: .3s;
+        }
 
-    .available {
-        opacity: 1;
-    }
+        .available {
+            opacity: 1;
+        }
 
 
-    .unavailable {
-        background-color: #958d99;
-        color: #000;
-        cursor: not-allowed;
-    }
+        .unavailable {
+            background-color: #958d99;
+            color: #000;
+            cursor: not-allowed;
+        }
 
-    td:hover {
-        background-color: #D1D1D1;
-    }
+        td:hover {
+            background-color: #D1D1D1;
+        }
 
-    tr th {
-        padding-block: 25px;
-        font-size: 16px;
+        tr th {
+            padding-block: 25px;
+            font-size: 16px;
 
-        font-weight: 400;
-    }
+            font-weight: 400;
+        }
 
-    button {
-        padding: 3px 6px;
-        cursor: pointer;
-    }
+        button {
+            padding: 3px 6px;
+            cursor: pointer;
+        }
 
-    /* Estilo para os dias de outros meses */
-    .month-day {
-        opacity: 1;
-    }
+        /* Estilo para os dias de outros meses */
+        .month-day {
+            opacity: 1;
+        }
 
-    .visitor-cell {
-        cursor: pointer;
-    }
+        .visitor-cell {
+            cursor: pointer;
+        }
 
-    .modal-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        .modal-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .modal {
-        background-color: white;
-        border-radius: 10px;
-        padding: 20px;
-        width: 500px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .modal {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .modal legend {
-        font-weight: 600;
-    }
+        .modal legend {
+            font-weight: 600;
+        }
 
-    .modal legend>span {
-        text-decoration: underline;
-        font-weight: 600;
-    }
+        .modal legend>span {
+            text-decoration: underline;
+            font-weight: 600;
 
-    .modal .form-group {
-        width: 100%;
-        margin-block: 20px;
-    }
+            cursor: pointer;
+        }
 
-    .modal .form-group label {
-        color: #000;
-        font-size: 14px;
+        .modal .form-group {
+            width: 100%;
+            margin-block: 20px;
+        }
 
-        font-weight: 709;
-    }
+        .modal .form-group label {
+            color: #000;
+            font-size: 14px;
 
-    .modal .form-group input {
-        width: 100%;
-        height: 50px;
-        border-radius: 3px;
-        border: 2px solid #F1F1F1;
+            font-weight: 709;
+        }
 
-        padding: 20px;
-    }
+        .modal .form-group input {
+            width: 100%;
+            height: 50px;
+            border-radius: 3px;
+            border: 2px solid #F1F1F1;
 
-    .modal button {
-        padding: 8px;
-    }
-</style>
+            padding: 20px;
+        }
+
+        .modal button {
+            padding: 8px;
+            width: 100%;
+            font-weight: 600;
+            margin-block: 3px;
+            border: 1px solid #0101;
+            border-radius: 6px;
+
+            background-color: #E5EBC3;
+        }
+
+        .modal button:last-child {
+            background-color: #EBC3C3;
+        }
+    </style>
