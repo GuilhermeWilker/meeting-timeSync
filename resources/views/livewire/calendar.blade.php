@@ -46,7 +46,7 @@ wire:click="markDateUnavailable('{{ $date }}')"
         </tbody>
     </table>
 
-    {{-- Modal --}}
+    {{-- Modal para solicitar reunião --}}
     <div>
         @if ($isModalOpen)
             <div class="modal-background">
