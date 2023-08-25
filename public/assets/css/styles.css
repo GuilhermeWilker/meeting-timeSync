@@ -5,6 +5,155 @@
 
     font-family: Cooper Hewitt;
     font-weight: 300;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.header_home {
+    margin: 20px auto;
+    width: 1280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 25px;
+}
+
+.header_home-logo {
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+
+    font-weight: 709;
+}
+
+.header_home-navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    list-style-type: none;
+}
+
+.header_home-navbar ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.container-home {
+    margin: 43px 57px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.hero {
+    position: relative;
+    width: 700px;
+
+    margin: 120px 0;
+}
+
+.hero small {
+    color: #1c1c1c;
+
+    font-family: Cooper Hewitt;
+    font-weight: 711;
+    font-size: 25px;
+
+    position: absolute;
+    top: -1em;
+    left: -2em;
+}
+
+.hero h1 {
+    color: #1c1c1c;
+    text-align: center;
+
+    font-size: 100px;
+    font-weight: 713;
+    width: 667px;
+}
+
+.hero .markup {
+    content: "";
+    width: 421.986px;
+    height: 65.262px;
+
+    transform: rotate(-4.666deg);
+    background: #8383ef;
+
+    position: absolute;
+    top: 10.9em;
+    right: 10em;
+    z-index: -2;
+}
+
+.flag {
+    position: absolute;
+    top: 40em;
+
+    width: 2500px;
+    height: 610.099px;
+    transform: rotate(-12.419deg);
+
+    background: #dadaff;
+    z-index: -2;
+}
+
+.nav_link-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 142px;
+    height: 53px;
+
+    border-radius: 8px;
+    background: #1c1c1c;
+}
+
+.nav_link-dashboard a {
+    color: white !important;
+    font-weight: 700;
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    margin-block: 45px;
+}
+
+.slide:last-child {
+    margin-top: 120px;
+}
+
+.slide .slide_description {
+    width: 460px;
+}
+
+.slide .slide_description h4 {
+    color: #1c1c1c;
+    font-size: 30px;
+    font-weight: 713;
+
+    padding-bottom: 20px;
+}
+
+.slide .slide_description p {
+    color: #1c1c1c;
+
+    font-size: 17px;
+    font-weight: 600;
+    margin-block: 12px;
 }
 
 .logout-btn {

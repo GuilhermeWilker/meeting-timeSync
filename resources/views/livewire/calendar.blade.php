@@ -58,15 +58,17 @@ wire:click="markDateUnavailable('{{ $date }}')"
 
                     <div class="form-group">
                         <label for="visitorName">Seu nome:</label>
-                        <input type="text" name="visitorName" wire:model="visitorName" />
+                        <input type="text" name="visitorName" wire:model="visitorName" required />
                     </div>
 
                     <div class="form-group">
                         <label for="visitorEmail">Seu email:</label>
-                        <input type="email" name="visitorEmail" wire:model="visitorEmail" />
+                        <input type="email" name="visitorEmail" wire:model="visitorEmail" required />
                     </div>
 
-                    <button type="button" wire:click="scheduleMeeting">Agendar reunião</button>
+                    <button type="button" wire:click="scheduleMeeting">
+                        Agendar reunião
+                    </button>
                     <button type="button" wire:click="closeModal">Cancelar</button>
                 </form>
             </div>
@@ -155,7 +157,7 @@ wire:click="markDateUnavailable('{{ $date }}')"
             background-color: white;
             border-radius: 10px;
             padding: 20px;
-            width: 500px;
+            width: 340px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -192,17 +194,20 @@ wire:click="markDateUnavailable('{{ $date }}')"
         }
 
         .modal button {
-            padding: 8px;
+            padding: 15px 8px;
             width: 100%;
             font-weight: 600;
             margin-block: 3px;
             border: 1px solid #0101;
             border-radius: 6px;
-
-            background-color: #E5EBC3;
+            transition: .3s ease-in-out;
         }
 
-        .modal button:last-child {
-            background-color: #EBC3C3;
+        .modal button:hover {
+            background-color: #2E64E3;
+        }
+
+        .modal button:last-child:hover {
+            background-color: #C45252;
         }
     </style>
