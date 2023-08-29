@@ -16,8 +16,8 @@
 <p>
     <small>
         ps**{{ $user->name }} {{ $user->lastname }}
-        não deixe de enviar um email de resposta ao
-        remetente!
+        não deixe de enviar um email de resposta a
+        {{ $visitorName }}!
     </small>
 </p>
 

@@ -37,8 +37,9 @@
                     <h4>Dashboard Simples e Interativa</h4>
                     <p>
                         Você encontrará todas as informações cruciais, incluindo um calendário que permite que você,
-                        como organizador, defina suas datas disponíveis para reuniões ou bloqueie aquelas em que
-                        preferiria não ser interrompido.
+                        <br>
+                        Como organizador, defina suas datas disponíveis para reuniões ou bloqueie aquelas em que
+                        prefira não ser interrompido.
                     </p>
 
                     <p>
@@ -48,7 +49,10 @@
 
                     <p>
                         Personalização é a chave! Sua bio pode refletir sua personalidade e destacar o que você
-                        considera importante. Transmita suas características demaneira única e deixe uma impressão
+                        considera importante.
+                    </p>
+                    <p> Transmita suas características demaneira única e deixe uma
+                        impressão
                         marcante desde o primeiro contato.
                     </p>
                 </div>
