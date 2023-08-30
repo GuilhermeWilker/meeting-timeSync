@@ -2,7 +2,30 @@
 
 O TimeSync Meetings é uma solução projetada para simplificar e otimizar o agendamento de reuniões, tornando-o flexível e eficiente tanto para organizadores quanto para seus convidados.
 
+<img style="margin: 0 auto;" src="./public/assets/readme/home.png"/>
+
 ## Recursos em Destaque
+
+-   **Agendamento de Reuniões Sem Complicações:**
+
+    <div style="display: flex; align-items:center; gap: 30px;">
+     <div>
+      <small>Dashboard Organizador</small>
+      <img style="margin: 0 auto;" src="./public/assets/readme/dashboard.png"/>
+      <p>
+        Organizadores têm a flexibilidade de definir datas disponíveis ou <br>
+        indisponiveis e enviar um link de convite.
+      </p>  
+     </div>
+
+     <div>
+      <small>Convite para convidado</small>
+      <img style="margin: 0 auto;" src="./public/assets/readme/dashboard.png"/>
+       <p>
+        Convidados podem solicitar reuniões, selecionando datas disponíveis.
+       </p>
+     </div>
+    </div>
 
 -   **Autenticação Simplificada:**
 
@@ -10,22 +33,19 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
     -   Convidados utilizam o serviço sem a necessidade autenticação.
 
 -   **Calendário Interativo:**
+    <img style="margin: 0 auto; width: 500px;" src="./public/assets/readme/calendario.png"/>
 
     -   Visualizar a disponibilidade dos organizadores de forma clara e intuitiva.
     -   Organizadores podem indicar datas disponíveis e bloqueadas diretamente em seu dashboard.
 
--   **Agendamento de Reuniões Sem Complicações:**
-
-    -   Convidados podem solicitar reuniões, selecionando datas disponíveis.
-    -   Organizadores têm a flexibilidade de aceitar ou recusar as solicitações.
-
--   **Fluxo Simplificado:**
+-   **Fluxo de agendamento simplificado:**
+    <img style="width: 800px;" src="./public/assets/readme/TymeSync%20-%20diagrama%20do%20envio%20e-mail.png"/>
     1. Convidados escolhem datas disponíveis no calendário, inserem suas informações.
     2. Após o envio, ambos organizador e convidado recebem notificações por e-mail.
     3. A partir daí, os detalhes finais da reunião são acordados fora do sistema.
 
 ## Tecnologias de Base
 
--   **Laravel:** Um framework PHP poderoso e flexível.
--   **Livewire:** Biblioteca que viabiliza interfaces dinâmicas no Laravel.
--   **Bootstrap:** Framework CSS para design responsivo.
+-   **Laravel:** Mantendo todo o MVC e lógicas.
+-   **Livewire:** Deixando os componentes de frontend dinâmicos sem a necessidade de javascript.
+-   **MySQL:** Banco de dados.
