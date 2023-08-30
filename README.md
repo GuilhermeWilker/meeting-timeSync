@@ -13,8 +13,9 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
       <small>Dashboard Organizador</small>
       <img style="margin: 0 auto;" src="./public/assets/readme/dashboard.png"/>
       <p>
-        Organizadores têm a flexibilidade de definir datas disponíveis ou <br>
+       <strong>Organizadores têm a flexibilidade de definir datas disponíveis ou <br>
         indisponiveis e enviar um link de convite.
+       </strong>
       </p>  
      </div>
 
@@ -22,7 +23,9 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
       <small>Convite para convidado</small>
       <img style="margin: 0 auto;" src="./public/assets/readme/dashboard.png"/>
        <p>
+       <strong>
         Convidados podem solicitar reuniões, selecionando datas disponíveis.
+       </strong>
        </p>
      </div>
     </div>
@@ -33,7 +36,6 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
     -   Convidados utilizam o serviço sem a necessidade autenticação.
 
 -   **Calendário Interativo:**
-    <img style="margin: 0 auto; width: 500px;" src="./public/assets/readme/calendario.png"/>
 
     -   Visualizar a disponibilidade dos organizadores de forma clara e intuitiva.
     -   Organizadores podem indicar datas disponíveis e bloqueadas diretamente em seu dashboard.
