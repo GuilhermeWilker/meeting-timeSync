@@ -34,9 +34,9 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
 
 <img style="width: 800px;" src="./public/assets/readme/TymeSync%20-%20diagrama%20do%20envio%20e-mail.png"/>
 
-    1- Os convidados selecionam datas disponíveis no calendário e fornecem suas informações. <br>
-    2- Após o envio, tanto o organizador quanto os convidados recebem notificações por e-mail. <br>
-    3- A partir desse ponto, os detalhes finais da reunião são acordados fora do sistema (plataforma, horários, etc). <br>
+1- Os convidados selecionam datas disponíveis no calendário e fornecem suas informações. <br>
+2- Após o envio, tanto o organizador quanto os convidados recebem notificações por e-mail. <br>
+3- A partir desse ponto, os detalhes finais da reunião são acordados fora do sistema (plataforma, horários, etc). <br>
 
 ## Tecnologias Fundamentais
 
