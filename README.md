@@ -30,13 +30,9 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
      </div>
     </div>
 
--   **Autenticação Simplificada:**
+## Fluxo de agendamento simplificado
 
-    -   Organizadores podem se inscrever e fazer login com facilidade.
-    -   Convidados utilizam o serviço sem a necessidade autenticação.
-
--   **Fluxo de agendamento simplificado:**
-    <img style="width: 800px;" src="./public/assets/readme/TymeSync%20-%20diagrama%20do%20envio%20e-mail.png"/>
+<img style="width: 800px;" src="./public/assets/readme/TymeSync%20-%20diagrama%20do%20envio%20e-mail.png"/>
 
     1- Os convidados selecionam datas disponíveis no calendário e fornecem suas informações. <br>
     2- Após o envio, tanto o organizador quanto os convidados recebem notificações por e-mail. <br>
