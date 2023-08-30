@@ -35,19 +35,17 @@ O TimeSync Meetings é uma solução projetada para simplificar e otimizar o age
     -   Organizadores podem se inscrever e fazer login com facilidade.
     -   Convidados utilizam o serviço sem a necessidade autenticação.
 
--   **Calendário Interativo:**
-
-    -   Visualizar a disponibilidade dos organizadores de forma clara e intuitiva.
-    -   Organizadores podem indicar datas disponíveis e bloqueadas diretamente em seu dashboard.
-
 -   **Fluxo de agendamento simplificado:**
     <img style="width: 800px;" src="./public/assets/readme/TymeSync%20-%20diagrama%20do%20envio%20e-mail.png"/>
-    1. Convidados escolhem datas disponíveis no calendário, inserem suas informações.
-    2. Após o envio, ambos organizador e convidado recebem notificações por e-mail.
-    3. A partir daí, os detalhes finais da reunião são acordados fora do sistema.
 
-## Tecnologias de Base
+    1- Os convidados selecionam datas disponíveis no calendário e fornecem suas informações.
+    2- Após o envio, tanto o organizador quanto os convidados recebem notificações por e-mail.
+    3- A partir desse ponto, os detalhes finais da reunião são acordados fora do sistema (plataforma, horários, etc).
 
--   **Laravel:** Mantendo todo o MVC e lógicas.
--   **Livewire:** Deixando os componentes de frontend dinâmicos sem a necessidade de javascript.
--   **MySQL:** Banco de dados.
+## Tecnologias Fundamentais
+
+-   **Laravel:** Utilizando padrão de projeto MVC (Model-View-Controller) para organizar e gerenciar a lógica da aplicação.
+
+-   **Livewire:** Capacitando a criação de componentes de frontend interativos sem a dependência direta de JavaScript. Permitindo que a interface do usuário responda de forma dinâmica.
+
+-   **MySQL:** Servindo como sistema gerenciador de banco de dados, fornecendo armazenamento estruturado para a aplicação.
