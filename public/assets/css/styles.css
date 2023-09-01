@@ -439,3 +439,46 @@ body {
     font-size: 16px;
     font-weight: 707;
 }
+
+@media (max-width: 1300px) {
+    .header_home {
+        width: 100%;
+    }
+
+    .slide img {
+        width: 50%;
+    }
+
+    .slide .slide_description p {
+        font-size: 14px;
+    }
+
+    .slide .slide_description h4 {
+        font-size: 28px;
+
+        padding-bottom: 7px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 90px;
+    }
+
+    .hero .markup {
+        top: 9.1em;
+    }
+
+    .hero small {
+        left: 0em;
+    }
+
+    .slide {
+        gap: 35px;
+        flex-direction: column;
+    }
+
+    .slide img {
+        width: 80%;
+    }
+}
