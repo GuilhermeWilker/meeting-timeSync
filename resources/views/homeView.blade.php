@@ -15,7 +15,7 @@
 
         <nav class="header_home-navbar">
             <ul>
-                <li><a href="#slides_container">Começar a utilizar o TimeSync</a></li>
+                <li><a href="#slides_container">Como funciona o TimeSync?</a></li>
                 <li class="nav_link-dashboard"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             </ul>
         </nav>
@@ -23,7 +23,16 @@
     <main class="container-home">
         <section class="hero">
             <small>Em apenas alguns cliques suas</small>
-            <h1>Reuniões com agilidade</h1>
+            <h1>
+                Reuniões com
+                <div class="words">
+                    <span>eficácia</span>
+                    <span>rapidez</span>
+                    <span>praticidade</span>
+                    <span>autonomia</span>
+                    <span>eficácia</span>
+                </div>
+            </h1>
 
             <div class="markup"></div>
         </section>

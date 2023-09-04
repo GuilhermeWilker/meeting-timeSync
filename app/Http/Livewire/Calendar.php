@@ -112,8 +112,10 @@ class Calendar extends Component
         }
 
         // Preencher dias vazios no final do mês (se necessário)
-        while (count($this->weeks[$currentWeek]) < 7) {
-            $this->weeks[$currentWeek][] = null;
+        if (date('w', strtotime($this->year.'-'.$this->month.'-'.$daysInMonth)) != 6) {
+            while (count($this->weeks[$currentWeek]) < 7) {
+                $this->weeks[$currentWeek][] = null;
+            }
         }
     }
 

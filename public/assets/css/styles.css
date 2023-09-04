@@ -440,6 +440,44 @@ body {
     font-weight: 707;
 }
 
+.words span {
+    display: block;
+    font-weight: 800;
+    animation: spin_words 6s infinite;
+}
+
+.words {
+    overflow: hidden;
+    height: 1.2em;
+}
+
+@keyframes spin_words {
+    10% {
+        transform: translateY(-112%);
+    }
+    25% {
+        transform: translateY(-100%);
+    }
+    35% {
+        transform: translateY(-212%);
+    }
+    50% {
+        transform: translateY(-200%);
+    }
+    60% {
+        transform: translateY(-312%);
+    }
+    75% {
+        transform: translateY(-300%);
+    }
+    85% {
+        transform: translateY(-412%);
+    }
+    100% {
+        transform: translateY(-400%);
+    }
+}
+
 @media (max-width: 1300px) {
     .header_home {
         width: 100%;
@@ -470,7 +508,7 @@ body {
     }
 
     .hero small {
-        left: 0em;
+        left: 1em;
     }
 
     .slide {
