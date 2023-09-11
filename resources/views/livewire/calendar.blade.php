@@ -210,4 +210,21 @@ wire:click="markDateUnavailable('{{ $date }}')"
         .modal button:last-child:hover {
             background-color: #C45252;
         }
+
+        @media (max-width: 400px){
+            td {
+                border-radius: 3px;
+                text-align: center;
+                padding: 10px;
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                background-color: #fff;
+                opacity: 0.25;
+                transition: .3s;
+                margin: 23px;
+            }
+
+
+        }
     </style>
